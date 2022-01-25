@@ -23,6 +23,7 @@ jobs:
               cabal user-config init
             fi
             cabal user-config update
+            cabal update
       - run:
           name: build-libs
           command: |
