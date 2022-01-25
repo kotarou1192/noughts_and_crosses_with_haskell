@@ -13,9 +13,14 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: make-cachefile
+          command: |
+            touch ./project.summary
+            find . -name "*.cabal" | grep -v 'dist-newstyle/' | sort | xargs grep '^' | grep -v ':version:' | md5sum > ./project.summary
       - restore_cache:
           keys:
-            - v2-dependeces-{{ checksum "~/.cabal/project.summary" }}
+            - v2-dependeces-{{ checksum "./project.summary" }}
       - run:
           name: init cabal
           command: |
