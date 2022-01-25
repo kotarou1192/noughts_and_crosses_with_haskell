@@ -1,0 +1,11 @@
+version: 2.1
+
+orbs:
+  haskell-build: haskell-works/haskell-build@4.1.9
+workflows:
+  - cabal-build-extra:
+    executor: haskell/ghc-8.6.5
+    name: GHC8.4.4
+  - cabal-test-extra:
+    requires:
+      - cabal-build-extra
