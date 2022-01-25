@@ -39,4 +39,4 @@ jobs:
       - save_cache:
           key: dependeces-{{ checksum "./build/project.summary" }}
           paths: 
-            - build
+            - ~/.cabal
