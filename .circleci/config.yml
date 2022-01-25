@@ -17,6 +17,21 @@ jobs:
           keys:
             - dependeces-{{ checksum "./build/project.summary" }}
       - run:
+          name: init cabal
+          command: |
+            if [[ ! -e ~/.cabal/config ]]; then
+              cabal user-config init
+            fi
+            echo >> ~/.cabal/config
+            echo    "http-transport: wget"                                 >> ~/.cabal/config
+            echo    "repository private"                                   >> ~/.cabal/config
+            echo -n "  url: https://<< parameters.private-hackage-user >>" >> ~/.cabal/config
+            echo -n ":<< parameters.private-hackage-password >>"           >> ~/.cabal/config
+            echo    "@<< parameters.private-hackage-domain >>/"            >> ~/.cabal/config
+            echo    "  secure: True"                                       >> ~/.cabal/config
+            echo    "  root-keys: << parameters.private-hackage-keys >>"   >> ~/.cabal/config
+            echo    "  key-threshold: 2"                                   >> ~/.cabal/config
+      - run:
           name: build-libs
           command: |
             cabal v2-install --reorder-goals --max-backjumps=-1
