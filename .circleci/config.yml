@@ -8,7 +8,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: quay.io/haskell_works/ghc-8.6.3:ubuntu-16.04
+      - image: quay.io/haskell_works/ghc-8.6.5:i386-ubuntu-18.04
     working_directory: ~/project
     steps:
       - checkout
@@ -19,7 +19,7 @@ jobs:
       - run:
           name: build-libs
           command: |
-            cabal cabal v2-install --reorder-goals --max-backjumps=-1
+            cabal v2-install --reorder-goals --max-backjumps=-1
       - run:
           name: test
           command: cabal new-test
