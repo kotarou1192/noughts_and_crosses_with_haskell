@@ -1,7 +1,5 @@
 # infomations
 
-[circleCI](./)
-
 ## commands
 
 - cabal new-test
