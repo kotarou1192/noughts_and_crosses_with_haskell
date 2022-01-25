@@ -45,4 +45,5 @@ test-suite noughts-and-crosses-with-haskell-test
   type: exitcode-stdio-1.0
   hs-source-dirs: test
   main-is: Spec.hs
+  other-modules: TmpLibSpec
   build-depends: noughts-and-crosses-with-haskell
