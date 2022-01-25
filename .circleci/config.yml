@@ -32,7 +32,7 @@ jobs:
       - run:
           name: build-libs
           command: |
-            cabal v2-install --reorder-goals --max-backjumps=-1
+            cabal v2-install --reorder-goals --max-backjumps=-1 --overwrite-policy=always
       - run:
           name: test
           command: cabal new-test
