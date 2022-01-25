@@ -15,7 +15,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-dependeces-{{ checksum "./build/project.summary" }}
+            - v2-dependeces-{{ checksum "~/.cabal/project.summary" }}
       - run:
           name: init cabal
           command: |
@@ -34,9 +34,9 @@ jobs:
       - run:
           name: make-cachefile
           command: |
-            mkdir -p ./build
-            find . -name "*.cabal" | grep -v 'dist-newstyle/' | sort | xargs grep '^' | grep -v ':version:' | md5sum > ./build/project.summary
+            touch ~/.cabal/project.summary
+            find . -name "*.cabal" | grep -v 'dist-newstyle/' | sort | xargs grep '^' | grep -v ':version:' | md5sum > ~/.cabal/project.summary
       - save_cache:
-          key: v1-dependeces-{{ checksum "./build/project.summary" }}
+          key: v2-dependeces-{{ checksum "~/.cabal/project.summary" }}
           paths: 
             - ~/.cabal
