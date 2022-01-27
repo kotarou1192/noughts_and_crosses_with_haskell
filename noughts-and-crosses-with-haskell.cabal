@@ -26,7 +26,7 @@ common test-depends
 
 library
   import: config-base
-  exposed-modules: TmpLib
+  exposed-modules: TmpLib, GameState
   -- exposed-modules:
   -- other-modules:
   -- other-extensions:
@@ -45,5 +45,5 @@ test-suite noughts-and-crosses-with-haskell-test
   type: exitcode-stdio-1.0
   hs-source-dirs: test
   main-is: Spec.hs
-  other-modules: TmpLibSpec
+  other-modules: TmpLibSpec, GameStateSpec
   build-depends: noughts-and-crosses-with-haskell
