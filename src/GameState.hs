@@ -1,4 +1,4 @@
-module GameState (processGame, startGame, isP1Turn, isP2Turn) where
+module GameState (processGame, startGame, isP1Turn, isP2Turn, GameState) where
 
 type TurnCount = Int
 
