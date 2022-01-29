@@ -1,8 +1,13 @@
 module Main where
 
-import qualified TmpLib (tmpFunc)
+import Control.Monad (forever)
+-- import qualified PutMarkWithState
+
+import Data.Maybe
+import GameIO
+import Text.Read (readMaybe)
 
 main :: IO ()
 main = do
-  putStrLn "Hello, Haskell!"
-  TmpLib.tmpFunc
+  runGame
+  return ()
