@@ -1,4 +1,4 @@
-module PutMarkWithState (startGameWithPlayer, playGame, putBoardStr) where
+module PutMarkWithState (startGameWithPlayer, playGame, putBoardStr, Game) where
 
 import Data.Maybe
 import GameState
@@ -21,7 +21,7 @@ startGameWithPlayer n m1 m2 = Just (m1, m2, startGame, genBoard n)
 
 playGame :: Pos -> State -> Game
 playGame p (m1, m2, gs, b)
-  | isNothing gs = Nothing
+  | let Just (t, _) = gs in t >= 9 = Nothing
   | otherwise = Just (m2, m1, gs >>= processGame, putMark m1 p b)
 
 putBoardStr :: State -> IO ()
