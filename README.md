@@ -8,8 +8,8 @@ branch main:
 [you can play this game (Wikipedia Link)](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
 You can choose a battle mode:
-- vs Player : you can play with your a friend.
-- vs computer : oh, you haven't friends? you can play solo.
+- vs Player : You can play with your a friend.
+- vs Computer : Oh, you have no friends? You can play solo.
 
 ## commands
 
