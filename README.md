@@ -9,7 +9,7 @@ branch main:
 
 You can choose a battle mode:
 - vs Player : You can play with your a friend.
-- vs Computer : Oh, you have no friends? You can play solo.
+- vs Computer : Oh, you have no friend? Don't worry, this program can be your best friend! So you can play solo.
 
 ## commands
 
