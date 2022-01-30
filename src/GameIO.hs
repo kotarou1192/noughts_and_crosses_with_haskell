@@ -1,6 +1,7 @@
 module GameIO (runGame) where
 
 import Data.Maybe
+import GameWinner
 import PutMarkWithState
 import Text.Read (readMaybe)
 
@@ -28,13 +29,12 @@ getNum (g, xs) = do
   n <- getNumLoop xs
   let b = g >>= playGame n
   -- print b
-  if isNothing b then returnNothing g n else retry b n >>= getNum
+  if isNothing b || isWinner b then stopCall g n else retry b n >>= getNum
   where
-    alreadyPut n = n `elem` xs
-    returnNothing b n = do
-      let Just gb = b
+    stopCall b n = do
+      let Just gb = if isNothing (b >>= playGame n) then b else b >>= playGame n
       putBoardStr gb
-      return (Nothing, n : xs) :: IO GameLog
+      return (b, n : xs) :: IO GameLog
     retry b n = do
       let Just gb = b
       putBoardStr gb
