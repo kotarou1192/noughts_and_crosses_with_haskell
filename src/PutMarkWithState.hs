@@ -1,4 +1,4 @@
-module PutMarkWithState (startGameWithPlayer, playGame, putBoardStr, Game) where
+module PutMarkWithState (startGameWithPlayer, playGame, putBoardStr, putBoardStr', Game) where
 
 import Data.Maybe
 import GameState
@@ -26,6 +26,10 @@ playGame p (m1, m2, gs, b)
 
 putBoardStr :: State -> IO ()
 putBoardStr (_, _, _, b) = printBoard b
+
+putBoardStr' :: Game -> IO ()
+putBoardStr' Nothing = return ()
+putBoardStr' (Just (_, _, _, b)) = printBoard b
 
 printBoard :: Board -> IO ()
 printBoard b = do

@@ -9,5 +9,8 @@ import Text.Read (readMaybe)
 
 main :: IO ()
 main = do
-  runGame
+  putStrLn "battle to cpmputer player? [y/n]"
+  str <- getLine
+  if str == "y" then runGameWithPC else runGame
+  putStrLn "thank you for playing, bye!"
   return ()

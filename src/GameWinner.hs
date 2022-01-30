@@ -1,4 +1,4 @@
-module GameWinner (isWinner, isAlignRight, isAlignDown, isAlignCross) where
+module GameWinner (isWinner, isAlignRight, isAlignDown, isAlignCross, isWinner') where
 
 import PutMark
 import PutMarkWithState
@@ -10,6 +10,9 @@ type Mark = String
 isWinner :: Game -> Bool
 isWinner Nothing = False
 isWinner (Just (_, _, _, b)) = any (isAlignRight b) [0, 3, 6] || any (isAlignDown b) [0, 1, 2] || any (isAlignCross b) [0, 2]
+
+isWinner' :: Board -> Bool
+isWinner' b = any (isAlignRight b) [0, 3, 6] || any (isAlignDown b) [0, 1, 2] || any (isAlignCross b) [0, 2]
 
 isAlignRight :: Board -> Index -> Bool
 isAlignRight b i
